@@ -149,3 +149,17 @@ def merge(arr1, arr2)
   end
   sorted += arr1 += arr2
 end
+
+def greedy_make_change(value, coins)
+  changes = []
+  # while value > 0
+    coins.each do |coin|
+      if value >= coin
+        value -= coin
+        changes << coin
+        changes += greedy_make_change(value, coins)
+      end
+    end
+  # end
+  changes
+end

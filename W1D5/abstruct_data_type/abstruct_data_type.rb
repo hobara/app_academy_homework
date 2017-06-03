@@ -32,7 +32,7 @@ class Queue
   end
 
   def dequeue
-    @stack.pop
+    @queue.pop
   end
 
   def show
@@ -40,7 +40,6 @@ class Queue
   end
 
 end
-
 
 class Map
 
