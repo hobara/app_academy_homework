@@ -1,4 +1,4 @@
-## More recursion
+d## More recursion
 
 # Range (num1...num2)
 def recursive_range(start_num, end_num)
@@ -151,15 +151,14 @@ def merge(arr1, arr2)
 end
 
 def greedy_make_change(value, coins)
-  changes = []
-  # while value > 0
-    coins.each do |coin|
-      if value >= coin
-        value -= coin
-        changes << coin
-        changes += greedy_make_change(value, coins)
+  coins = coins.select { |coin| coin <= value }.sort.reverse
+  (1..value/coins.last).each do |size|
+    combinations = (coins * value).combination(size).to_a
+    combinations.each do |combi|
+      if combi.reduce(:+) == value
+        return combi.sort.reverse
       end
     end
-  # end
-  changes
+  end
+  nil
 end
