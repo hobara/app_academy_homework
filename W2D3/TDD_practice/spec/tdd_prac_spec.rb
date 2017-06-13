@@ -1,4 +1,4 @@
-require "TDD"
+require "tdd_prac"
 require "rspec"
 describe Array do
 

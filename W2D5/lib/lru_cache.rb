@@ -1,4 +1,5 @@
 class LRUCache
+  attr_reader :cache, :size
 
   def initialize(size)
     @size = size
@@ -11,8 +12,7 @@ class LRUCache
 
   def add(el)
     if @cache.include?(el)
-      idx = @cache.index(el)
-      @cache.slice!(idx)
+      @cache.delete(el)
     elsif @cache.length >= @size
       @cache.shift
     end
