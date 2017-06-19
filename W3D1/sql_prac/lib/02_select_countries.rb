@@ -30,7 +30,7 @@ def large_countries
     FROM
       countries
     WHERE
-      population > 200000000;
+      population >= 200000000
   SQL
 end
 
@@ -43,7 +43,7 @@ def high_population_gdps
     FROM
       countries
     WHERE
-      population > 200000000;
+      population > 200000000
   SQL
 end
 
@@ -69,7 +69,7 @@ def name_and_population
     FROM
       countries
     WHERE
-      (name = 'France' OR name = 'Germany' OR name = 'Italy');
+      name = 'France' OR name = 'Germany' OR name = 'Italy'
   SQL
 end
 

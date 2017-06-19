@@ -47,7 +47,7 @@ def larger_than_russia
           countries
         WHERE
           name = 'Russia'
-      )
+        )
   SQL
 end
 
@@ -60,6 +60,7 @@ def richer_than_england
     FROM
       countries
     WHERE
+      continent = 'Europe' AND
       gdp/population > (
         SELECT
           gdp/population
@@ -67,7 +68,8 @@ def richer_than_england
           countries
         WHERE
           name = 'United Kingdom'
-      ) AND continent = 'Europe'
+        )
+
   SQL
 end
 
@@ -81,13 +83,14 @@ def neighbors_of_certain_b_countries
       countries
     WHERE
       continent IN (
-      SELECT
-        continent
-      FROM
-        countries
-      WHERE
-        (name = 'Belize' OR name = 'Belgium')
-      );
+        SELECT
+          continent
+        FROM
+          countries
+        WHERE
+          name = 'Belize' OR name = 'Belgium'
+      )
+
   SQL
 end
 
@@ -115,7 +118,7 @@ def population_constraint
           countries
         WHERE
           name = 'Poland'
-      );
+      )
   SQL
 end
 
@@ -137,6 +140,6 @@ def sparse_continents
           countries
         WHERE
           population >= 25000000
-      );
+      )
   SQL
 end

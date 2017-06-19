@@ -69,7 +69,7 @@ def trek_films
     WHERE
       title LIKE '%Star Trek%'
     ORDER BY
-      yr;
+      yr
   SQL
 end
 
@@ -93,7 +93,7 @@ def glenn_close_id
     FROM
       actors
     WHERE
-      name = 'Glenn Close';
+      name = 'Glenn Close'
   SQL
 end
 
@@ -105,7 +105,7 @@ def casablanca_id
     FROM
       movies
     WHERE
-      title = 'Casablanca';
+      title = 'Casablanca'
   SQL
 end
 
@@ -117,12 +117,12 @@ def casablanca_cast
       name
     FROM
       actors
-    JOIN castings
-      ON actors.id = castings.actor_id
-    JOIN movies
-      ON movies.id = castings.movie_id
+      JOIN castings
+        ON castings.actor_id = actors.id
+      JOIN movies
+        ON castings.movie_id = movies.id
     WHERE
-      title = 'Casablanca';
+      movies.title = 'Casablanca'
   SQL
 end
 
@@ -134,10 +134,10 @@ def alien_cast
     FROM
       actors
       JOIN castings
-      ON actors.id = castings.actor_id
+        ON castings.actor_id = actors.id
       JOIN movies
-      ON movies.id = castings.movie_id
+        ON castings.movie_id = movies.id
     WHERE
-      title = 'Alien';
+      movies.title = 'Alien'
   SQL
 end

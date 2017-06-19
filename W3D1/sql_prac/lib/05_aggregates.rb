@@ -33,11 +33,12 @@ def africa_gdp
   # Give the total GDP of Africa.
   execute(<<-SQL)
     SELECT
-      SUM(gdp) AS total_gdp_Africa
+      SUM(gdp)
     FROM
       countries
     WHERE
-      continent = 'Africa';
+      continent = 'Africa'
+
   SQL
 end
 
@@ -61,7 +62,7 @@ def group_population
     FROM
       countries
     WHERE
-      name = 'France' OR name = 'Germany' OR name = 'Spain';
+      name = 'France' OR name = 'Germany' OR name = 'Spain'
   SQL
 end
 
@@ -73,7 +74,7 @@ def country_counts
     FROM
       countries
     GROUP BY
-      continent;
+      continent
   SQL
 end
 
@@ -82,13 +83,13 @@ def populous_country_counts
   # populations of at least 10 million.
   execute(<<-SQL)
     SELECT
-      continent, COUNT(name) AS number_of_countries
+      continent, COUNT(name)
     FROM
       countries
     WHERE
       population >= 10000000
     GROUP BY
-      continent;
+      continent
   SQL
 end
 
@@ -99,11 +100,9 @@ def populous_continents
       continent
     FROM
       countries
-    -- WHERE
-      -- SUM(population) >= 100000000
     GROUP BY
       continent
     HAVING
-      SUM(population) >= 100000000;
+      SUM(population) >= 100000000
   SQL
 end
