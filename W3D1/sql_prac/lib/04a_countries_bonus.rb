@@ -62,15 +62,20 @@ def large_neighbors
     FROM
       countries c1
     WHERE
-      population > (
+      population > 3 * (
         SELECT
-          MAX(population) * 3
+          population
         FROM
           countries c2
         WHERE
-          c1.name != c2.name AND
           c1.continent = c2.continent
-      )
+        ORDER BY
+          population DESC
+        OFFSET
+          1
+        LIMIT
+          1
 
+      );
   SQL
 end
