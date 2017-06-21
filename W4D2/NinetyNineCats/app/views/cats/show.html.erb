@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Cat: <%= @cat.name %></h1>
+    <%= link_to 'Back', cats_url %><br/>
+    <%= link_to 'Edit', edit_cat_url %>
+  </br/>
+    <table border='1' cellpadding='10' cellspacing='3' width='50%' style="margin:0 auto;">
+      <thead style='text-align:left'>
+        <row>
+          <th>Name</th>
+          <th>Birth Date</th>
+          <th>Color</th>
+          <th>Sex</th>
+          <th>Description</th>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <td><%= @cat.name %></td>
+          <td><%= @cat.birth_date %></td>
+          <td style='background-color: <%= @cat.color %>'><%= @cat.color %></td>
+          <td><%= @cat.sex %></td>
+          <td><%= @cat.description %></td>
+        </row>
+      </tbody>
+    </table>
+  </body>
+</html>
