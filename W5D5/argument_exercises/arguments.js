@@ -1,16 +1,17 @@
-// function sum (...args) {
-//   let total = 0;
-//   args.forEach((el) => {total += el;});
-//   return total;
-// }
+function sum (...args) {
+  let total = 0;
+  args.forEach((el) => {total += el;});
+  return total;
+}
+console.log(sum(1,2,3,5));
 
-// console.log(sum(1,2,3,5));
 
-// Function.prototype.myBind = function (target, ...args) {
-//   return (...callArgs) => {
-//     return this.apply(target, args.concat(callArgs));
-//   };
-// };
+
+Function.prototype.myBind = function (target, ...args) {
+  return (...callArgs) => {
+    return this.apply(target, args.concat(callArgs));
+  };
+};
 
 Function.prototype.myBind = function (target) {
   let contextArgs = Array.from(arguments).slice(1);
@@ -70,7 +71,7 @@ function curriedSum(numArgs) {
     numbers.push(number);
 
     if (numbers.length === numArgs) {
-      return numbers.reduce( (sum ,value) => {return sum + value;});
+      return numbers.reduce( (total ,value) => {return total + value;});
     } else {
       return _curriedSum;
     }
@@ -85,16 +86,16 @@ function curriedSum(numArgs) {
 
 Function.prototype.curry = function (numArgs) {
   // let that = this;
-  const curriedSum = (number) => {
+  const _curry = (number) => {
     numbers.push(number);
 
     if (numbers.length === numArgs) {
       return this.apply(this, numbers);
     } else {
-      return curriedSum;
+      return _curry;
     }
   };
-  return curriedSum;
+  return _curry;
 };
 
 function sumThree(num1, num2, num3) {
